@@ -1,42 +1,58 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
+    <title>智慧党建 - 红色引擎 领航未来</title>
+    <!-- 使用 FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 全局重置与基础设定 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
         }
 
         :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
+            /* 核心色彩系统：红与金 */
+            --primary: #ce0000;       /* 核心正红 */
+            --primary-dark: #8b0000;  /* 深红，用于渐变深色端 */
+            --accent: #fcd34d;        /* 亮金，用于高光和激活态 */
+            --accent-dark: #d97706;   /* 暗金，用于边框和文字 */
+            --bg-light: #fffbf0;      /* 暖白背景，模仿纸张质感 */
+            --text-main: #2c0b0e;     /* 深褐色文字，比纯黑更柔和 */
+            --text-light: #5e4b4d;    /* 次级文字 */
             --white: #ffffff;
+            --shadow: rgba(139, 0, 0, 0.15); /* 红调阴影 */
         }
 
         body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
+        /* 字体风格类 */
+        .serif-font {
+            font-family: "SimSun", "Songti SC", serif; /* 宋体，增加庄重感 */
+            font-weight: 700;
+        }
+
+        /* 头部设计 */
         header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
+            /* 增加微妙的纹理感，模拟红旗质感 */
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+            color: var(--accent);
+            padding: 0.8rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid var(--accent-dark);
         }
 
         .container {
@@ -54,13 +70,17 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 1.8rem;
-            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .logo i {
-            font-size: 2rem;
+            font-size: 2.2rem;
+            color: var(--accent); /* 金色徽章 */
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
         }
 
         nav ul {
@@ -69,191 +89,266 @@
         }
 
         nav ul li {
-            margin-left: 2rem;
+            margin-left: 2.5rem;
         }
 
         nav ul li a {
-            color: var(--white);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
-            padding: 0.5rem 0;
             position: relative;
+            padding-bottom: 5px;
         }
 
-        nav ul li a:hover {
+        nav ul li a:hover, nav ul li a.active {
             color: var(--accent);
         }
 
+        /* 导航下划线动画 - 从中心向两边展开 */
         nav ul li a::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
             background-color: var(--accent);
             transition: width 0.3s ease;
+            box-shadow: 0 0 5px var(--accent);
         }
 
         nav ul li a:hover::after {
             width: 100%;
         }
 
+        /* Hero 区域：大气磅礴 */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
+            /* 使用深红色叠加层 + 建筑/山河背景图 */
+            background: 
+                linear-gradient(rgba(139, 0, 0, 0.85), rgba(60, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1533035332459-d2471c984252?q=80&w=2070&auto=format&fit=crop'); /* 替换为长城或宏伟建筑类图片 */
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            background-attachment: fixed; /* 视差滚动效果 */
+            height: 85vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 添加底部的波浪装饰 SVG */
+        .hero::bottom {
+            content: '';
+            /* 这里可以用 SVG mask 制作波浪，简化起见用 border */
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            letter-spacing: 2px;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0.9;
         }
 
+        /* 按钮样式：金边红底或金底红字 */
         .btn {
             display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
+            background: linear-gradient(to bottom, var(--accent) 0%, var(--accent-dark) 100%);
+            color: #5c0000;
+            padding: 1rem 2.5rem;
+            border-radius: 4px; /* 稍微圆角，更显正式，不像 50px 那么圆 */
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
         }
 
         .btn:hover {
-            background-color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 15px rgba(252, 211, 77, 0.4);
+            background: linear-gradient(to bottom, #ffeba0 0%, var(--accent) 100%);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(252, 211, 77, 0.1);
+            color: #fff;
         }
 
         section {
-            padding: 5rem 0;
+            padding: 6rem 0;
+            position: relative;
         }
 
+        /* 标题组件：带有两侧装饰线 */
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
+            font-size: 2.8rem;
+            color: var(--primary-dark);
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
         }
 
+        /* 标题下方的装饰图案 - 类似回纹风格 */
         .section-title h2::after {
             content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            display: block;
+            width: 60%;
             height: 4px;
-            background-color: var(--accent);
+            background: var(--primary);
+            margin: 15px auto 0;
             border-radius: 2px;
+        }
+        
+        .section-title h2::before {
+            content: '★ ★ ★'; /* 五角星装饰 */
+            display: block;
+            font-size: 1rem;
+            color: var(--accent-dark);
+            margin-bottom: 10px;
+            letter-spacing: 10px;
         }
 
         .section-title p {
-            color: var(--text);
+            color: var(--text-light);
+            font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
         }
 
+        /* 关于我们 */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
             align-items: center;
         }
 
         .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--accent); /* 金色边框 */
+            padding: 8px; /* 内边距形成双线效果 */
+            background: #fff;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: rotate(-2deg); /* 微微倾斜增加设计感 */
+            transition: transform 0.5s;
+        }
+        
+        .about-img:hover {
+            transform: rotate(0);
         }
 
         .about-img img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
+            filter: contrast(1.1); /* 增加对比度，照片更清晰 */
         }
 
         .about-text h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            color: var(--primary-dark);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            text-align: justify;
         }
 
+        /* 数据统计区：采用红色卡片风格 */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 4rem;
         }
 
         .stat-item {
             text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            padding: 2.5rem 1rem;
+            background: #fff;
+            border-top: 4px solid var(--primary); /* 红顶 */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* 鼠标悬停，背景变红，字变白 */
         .stat-item:hover {
+            background: var(--primary);
             transform: translateY(-10px);
+        }
+
+        .stat-item:hover h3, 
+        .stat-item:hover p, 
+        .stat-item:hover i {
+            color: var(--white);
         }
 
         .stat-item i {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--primary); /* 初始为红色 */
             margin-bottom: 1rem;
+            transition: color 0.3s;
         }
 
         .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
+            font-size: 2.8rem;
+            color: var(--text-main);
             margin-bottom: 0.5rem;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
         }
 
         .stat-item p {
-            color: var(--text);
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
+        /* 专题模块背景 */
         .initiatives {
-            background-color: var(--white);
+            background-color: #fff;
+            background-image: radial-gradient(var(--bg-light) 20%, transparent 20%),
+            radial-gradient(var(--bg-light) 20%, transparent 20%);
+            background-size: 20px 20px; /* 点阵纹理 */
         }
 
         .initiatives-grid {
@@ -263,95 +358,153 @@
         }
 
         .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
+            background-color: var(--white);
+            border: 1px solid #eee;
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .initiative-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(185, 28, 28, 0.15); /* 红色光晕 */
         }
 
         .initiative-img {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
+            position: relative;
+        }
+        
+        /* 图片上的红色遮罩，增加统一感 */
+        .initiative-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(185, 28, 28, 0.1);
+            transition: opacity 0.3s;
+        }
+        
+        .initiative-card:hover .initiative-img::after {
+            opacity: 0;
         }
 
         .initiative-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .initiative-content {
-            padding: 1.5rem;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .initiative-content h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--primary-dark);
+            font-weight: 700;
         }
 
         .initiative-content p {
             margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            flex-grow: 1;
         }
 
+        /* 文字链接按钮 */
+        .text-btn {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+        
+        .text-btn:hover {
+            gap: 10px;
+            color: var(--primary-dark);
+        }
+
+        /* 呼吁行动区：红旗飘扬 */
         .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23990000' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), 
+            linear-gradient(to right, var(--primary), #991b1b);
             color: var(--white);
             text-align: center;
-            padding: 5rem 0;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-image: linear-gradient(90deg, var(--accent) 50%, transparent 50%);
+            background-size: 40px 100%;
         }
 
         .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
         }
 
         .cta .btn {
-            background-color: var(--white);
+            background: var(--white);
             color: var(--primary);
+            border: none;
+            margin-top: 1rem;
         }
 
         .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
+            background: var(--accent);
+            color: var(--primary-dark);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
         }
 
+        /* 页脚 */
         footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
+            background-color: #2e0505; /* 极深红 */
+            color: #d1d5db;
+            padding: 4rem 0 1rem;
+            border-top: 5px solid var(--primary);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-column h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 1.5rem;
+            color: var(--white);
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            font-family: "SimSun", serif;
         }
 
         .footer-column h3::after {
@@ -359,364 +512,310 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary); /* 红线装饰 */
         }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
+        
+        .footer-column h3::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 35px;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255,255,255,0.1);
         }
 
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 10px;
         }
-
+        
         .footer-links li a {
-            color: var(--light);
+            color: #a3a3a3;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
+            display: inline-block;
         }
 
         .footer-links li a:hover {
             color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
+            transform: translateX(5px);
         }
 
         .copyright {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #6b7280;
         }
 
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
+        /* 响应式调整 */
         @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .about-content { grid-template-columns: 1fr; }
+            .initiatives-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3rem; }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
-                display: none;
+            .nav-container { flex-wrap: wrap; }
+            .mobile-menu { display: block; color: var(--accent); font-size: 1.8rem; }
+            nav ul { 
+                display: none; 
+                flex-direction: column; 
+                width: 100%; 
+                background: var(--primary-dark);
                 position: absolute;
                 top: 100%;
                 left: 0;
-                width: 100%;
-                background-color: var(--primary);
-                flex-direction: column;
                 padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 0; text-align: center; padding: 10px; }
+            .hero { height: auto; padding: 100px 0; }
+            .initiatives-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
         }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
-        }
+        
+        .mobile-menu { display: none; cursor: pointer; }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- 头部导航 -->
     <header>
         <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
+            <div class="logo serif-font">
+                <i class="fas fa-star"></i> <!-- 更换为五角星 -->
+                <span>智慧党建云平台</span>
             </div>
             <nav>
                 <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#about">党建概况</a></li>
+                    <li><a href="#initiatives">先锋工程</a></li>
+                    <li><a href="#get-involved">志愿服务</a></li>
+                    <li><a href="#contact">联系我们</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero 区域：宏大叙事 -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
+            <h1 class="serif-font">不忘初心 牢记使命<br>为中华民族伟大复兴而奋斗</h1>
+            <p>坚持党建引领，凝聚发展合力，构建新时代智慧党建新格局。</p>
+            <div>
+                <a href="#get-involved" class="btn">加入组织</a>
+                <a href="#about" class="btn btn-outline">了解更多</a>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- 关于我们：庄重介绍 -->
     <section id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
+                <h2 class="serif-font">组织概况</h2>
+                <p>强化政治引领，筑牢战斗堡垒，推动党建工作与业务发展深度融合。</p>
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
+                    <!-- 替换为会议、握手或建筑类图片 -->
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="党建会议">
                 </div>
                 <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <h3 class="serif-font">红色基因 代代相传</h3>
+                    <p>智慧党建云平台致力于运用互联网技术，打造集宣传、管理、教育、服务为一体的智能化工作平台。我们坚持以习近平新时代中国特色社会主义思想为指导，不断提升基层党组织的组织力、凝聚力和战斗力。</p>
+                    <p>自成立以来，我们已服务超过 500 个基层党支部，实现了党务工作流程化、组织生活规范化、党员教育常态化。</p>
+                    <a href="#" class="text-btn">查看详细介绍 <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
+            
+            <!-- 数据统计：改为红色方块样式 -->
             <div class="stats">
                 <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
+                    <i class="fas fa-flag"></i> <!-- 旗帜 -->
+                    <h3 class="counter" data-target="100">0</h3>
+                    <p>建立党支部 (个)</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
+                    <i class="fas fa-user-tie"></i> <!-- 党员 -->
+                    <h3 class="counter" data-target="5000">0</h3>
+                    <p>注册党员 (人)</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
+                    <i class="fas fa-book-reader"></i> <!-- 学习 -->
+                    <h3 class="counter" data-target="12000">0</h3>
+                    <p>学习时长 (小时)</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
+                    <i class="fas fa-hands-helping"></i> <!-- 服务 -->
+                    <h3 class="counter" data-target="800">0</h3>
+                    <p>志愿服务 (次)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Initiatives Section -->
+    <!-- 专题工程：卡片展示 -->
     <section class="initiatives" id="initiatives">
         <div class="container">
             <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
+                <h2 class="serif-font">先锋工程</h2>
+                <p>聚焦重点任务，发挥党员先锋模范作用，打造特色党建品牌。</p>
             </div>
             <div class="initiatives-grid">
                 <div class="initiative-card">
                     <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
+                        <!-- 学习图片 -->
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="理论学习">
                     </div>
                     <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
+                        <h3 class="serif-font">理论武装工程</h3>
+                        <p>深入开展主题教育，坚持读原著、学原文、悟原理，用党的创新理论武装头脑、指导实践、推动工作。</p>
+                        <a href="#" class="text-btn">进入学习 <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="initiative-card">
                     <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
+                        <!-- 基层建设图片 -->
+                        <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e3169?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="基层建设">
                     </div>
                     <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
+                        <h3 class="serif-font">强基固本工程</h3>
+                        <p>推进党支部标准化规范化建设，严格落实"三会一课"制度，把基层党组织建设成为坚强战斗堡垒。</p>
+                        <a href="#" class="text-btn">查看详情 <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="initiative-card">
                     <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
+                        <!-- 社区服务图片 -->
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="为民服务">
                     </div>
                     <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
+                        <h3 class="serif-font">便民服务工程</h3>
+                        <p>践行全心全意为人民服务的宗旨，开展党员"亮身份、做表率"活动，切实解决群众急难愁盼问题。</p>
+                        <a href="#" class="text-btn">查看项目 <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- 呼吁行动 -->
     <section class="cta" id="get-involved">
         <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
+            <h2 class="serif-font">凝聚磅礴力量 共绘宏伟蓝图</h2>
+            <p style="max-width: 800px; margin: 0 auto 2rem;">一个支部就是一座堡垒，一名党员就是一面旗帜。让我们紧密团结在党的周围，立足本职岗位，争创一流业绩。</p>
+            <a href="#" class="btn">申请入党</a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 页脚 -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <h3 class="serif-font">智慧党建云平台</h3>
+                    <p>以高质量党建引领高质量发展，打造新时代党建工作新高地。</p>
+                    <div class="social-links" style="display: flex; gap: 10px;">
+                        <!-- 社交图标保持不变，样式已调整 -->
+                        <a href="#" style="color:white; background:rgba(255,255,255,0.1); width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:50%;"><i class="fab fa-weixin"></i></a>
+                        <a href="#" style="color:white; background:rgba(255,255,255,0.1); width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:50%;"><i class="fab fa-weibo"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3>快速导航</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">党建概况</a></li>
+                        <li><a href="#initiatives">先锋工程</a></li>
+                        <li><a href="#get-involved">党员风采</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Our Programs</h3>
+                    <h3>专题专栏</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
+                        <li><a href="#">党史学习</a></li>
+                        <li><a href="#">政策法规</a></li>
+                        <li><a href="#">廉政建设</a></li>
+                        <li><a href="#">先锋模范</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+                    <h3>联系方式</h3>
+                    <p><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right:8px;"></i> 北京市东城区xxx大街1号</p>
+                    <p><i class="fas fa-phone" style="color:var(--primary); margin-right:8px;"></i> 010-12345678</p>
+                    <p><i class="fas fa-envelope" style="color:var(--primary); margin-right:8px;"></i> contact@dangjian.cn</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+                <p>&copy; 2025 智慧党建云平台 版权所有 | 京ICP备12345678号</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // 移动端菜单切换
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('active');
         });
 
-        // Counter Animation
+        // 简单的数字增长动画
         function animateCounters() {
             const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
+            const speed = 200; 
             
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText;
-                
                 const inc = target / speed;
                 
                 if(count < target) {
                     counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
+                    setTimeout(animateCounters, 20);
                 } else {
                     counter.innerText = target;
                 }
             });
         }
 
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
+        // 监听滚动，当统计区域进入视口时才开始动画
+        let animated = false;
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats');
+            const position = statsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if(position < screenPosition && !animated) {
+                animateCounters();
+                animated = true;
+            }
+        });
 
-        // Smooth scrolling for navigation links
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if(targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
                     document.querySelector('nav ul').classList.remove('active');
                 }
             });
         });
     </script>
 </body>
-
 </html>
